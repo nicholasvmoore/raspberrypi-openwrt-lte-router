@@ -2,11 +2,19 @@
 
 ## Packages to install
 ```bash
-opkg update && opkg install minicom tmux usb-modeswitch kmod-usb-net-qmi-wwan uqmi kmod-usb-serial-wwan kmod-usb-serial-option qmi-utils iptables-mod-ipopt
+opkg update && opkg install minicom tmux usb-modeswitch kmod-usb-net-qmi-wwan uqmi kmod-usb-serial-wwan kmod-usb-serial-option qmi-utils iptables-mod-ipopt coreutils modemmanager luci-proto-modemmanager
 ```
 
 ## Connect to Ceullular Network (Auto)
+This configuration will configure your LTE modem on boot. There are issues using native QMI in OpenWRT that are resolved using modemmanager.
 
+1. Create interface Network > Interfaces > Add Interface
+  - Protocol ModemManager
+  - Bring up on boot
+  - Modem device: QUALCOMM INCORPORATED - QUECTEL Mobile Broadband Module
+  - APN: fast.t-mobile.com
+  - IP Type: IPv4/IPv6
+  - Signal Refresh Rate: 1 seconds
 
 ## Connect to Cellular Network (Manual)
 These commands will connect you to your cellular network
